@@ -1,0 +1,10 @@
+com\nana\email\appuser\AppUserRole.class
+com\nana\email\security\config\WebSecurityConfig.class
+com\nana\email\EmailApplication.class
+com\nana\email\appuser\AppUserService.class
+com\nana\email\appuser\AppUser.class
+com\nana\email\security\PasswordEncoder.class
+com\nana\email\registration\RegistrationRequest.class
+com\nana\email\registration\RegistrationService.class
+com\nana\email\appuser\AppUserRepository.class
+com\nana\email\registration\RegistrationController.class
