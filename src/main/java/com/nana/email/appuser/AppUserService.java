@@ -31,6 +31,11 @@ public class AppUserService  implements UserDetailsService {
       if (userExist){
           throw new IllegalStateException("email already exist");
       }
-        return "";
+    String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
+
+      appUser.setPassword(encodedPassword);
+      appUserRepository.save(appUser);
+//      Todo send confirmation token
+        return "It works ";
     }
 }
