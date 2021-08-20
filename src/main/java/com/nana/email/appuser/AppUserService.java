@@ -22,4 +22,13 @@ public class AppUserService  implements UserDetailsService {
         new UsernameNotFoundException(
                 String.format(USER_NOT_FOUND_MSG, email)));
     }
+
+    public String signUpUser(AppUser appUser){
+      Boolean userExist=  appUserRepository.findByEmail(appUser.getEmail())
+                .isPresent();
+      if (userExist){
+          throw new IllegalStateException("email already exist");
+      }
+        return "";
+    }
 }
