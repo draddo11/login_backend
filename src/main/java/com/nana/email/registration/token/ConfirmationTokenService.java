@@ -4,6 +4,7 @@ package com.nana.email.registration.token;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,9 @@ public class ConfirmationTokenService {
     }
 
 
-
+    public int setConfirmedAt(String token) {
+        return confirmationTokenRepository.updateConfirmedAt(
+                token, LocalDateTime.now());
+    }
 }
 
