@@ -24,9 +24,10 @@ public class ConfirmationToken {
             generator = "confirmation_token_sequence"
     )
     private Long id;
+
     @Column(nullable = false)
     private String token;
-//    private LocalDateTime localDateTime;
+
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
@@ -43,16 +44,16 @@ public class ConfirmationToken {
     )
     private AppUser appUser;
     public ConfirmationToken(
-//            LocalDateTime localDateTime,
+            String token,
             LocalDateTime createdAt,
             LocalDateTime expiresAt,
-            LocalDateTime confirmedAt,
             AppUser appUser
     ) {
-//        this.localDateTime = localDateTime;
+        this.token = token;
         this.createdAt = createdAt;
         this.expiresAt = expiresAt;
-        this.confirmedAt = confirmedAt;
-        this.appUser=appUser;
-}
+        this.appUser = appUser;
+    }
+
+
 }
