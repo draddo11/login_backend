@@ -36,6 +36,6 @@ public class AppUserService  implements UserDetailsService {
       appUser.setPassword(encodedPassword);
       appUserRepository.save(appUser);
 //      Todo send confirmation token
-        return "It works ";
+        return "It works from the app user service  ";
     }
 }
