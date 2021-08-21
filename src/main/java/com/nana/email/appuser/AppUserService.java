@@ -54,6 +54,7 @@ public class AppUserService  implements UserDetailsService {
         );
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
-        return "It works from the app user service  ";
+//        Todo send email
+        return token;
     }
 }
