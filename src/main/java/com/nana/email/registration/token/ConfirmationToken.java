@@ -1,5 +1,6 @@
 package com.nana.email.registration.token;
 
+import com.nana.email.appuser.AppUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,14 +14,14 @@ import java.time.LocalDateTime;
 public class ConfirmationToken {
 
     @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
+            name = "confirmation_token_sequence",
+            sequenceName = "confirmation_token_sequence",
             allocationSize = 1
     )
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
+            generator = "confirmation_token_sequence"
     )
     private Long id;
     @Column(nullable = false)
@@ -35,15 +36,19 @@ public class ConfirmationToken {
 
     private LocalDateTime confirmedAt;
 
+
+    private AppUser appUser;
     public ConfirmationToken(
 //            LocalDateTime localDateTime,
             LocalDateTime createdAt,
             LocalDateTime expiresAt,
-            LocalDateTime confirmedAt
+            LocalDateTime confirmedAt,
+            AppUser appUser
     ) {
 //        this.localDateTime = localDateTime;
         this.createdAt = createdAt;
         this.expiresAt = expiresAt;
         this.confirmedAt = confirmedAt;
-    }
+        this.appUser=appUser
+}
 }
