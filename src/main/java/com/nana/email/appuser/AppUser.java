@@ -33,8 +33,9 @@ public class AppUser implements UserDetails{
     private Long id;
     private String firstName;
     private String lastName;
-    private String password;
     private String email;
+    private String password;
+
     @Enumerated(EnumType.STRING)
     private  AppUserRole appUserRole;
     private  Boolean locked = false ;
@@ -43,14 +44,14 @@ public class AppUser implements UserDetails{
 //    generated constructor without id
     public AppUser(String firstName,
                    String lastName,
-                   String password,
                    String email,
+                   String password,
                    AppUserRole appUserRole
                   ) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
         this.email = email;
+        this.password = password;
         this.appUserRole = appUserRole;
 
     }

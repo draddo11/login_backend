@@ -12,12 +12,14 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+
 @Service
 @AllArgsConstructor
 public class AppUserService  implements UserDetailsService {
 
     private final static String USER_NOT_FOUND_MSG =
             "user with email %s not found";
+
     private final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final ConfirmationTokenService confirmationTokenService;
@@ -32,9 +34,11 @@ public class AppUserService  implements UserDetailsService {
     }
 
     public String signUpUser(AppUser appUser){
-      Boolean userExist=  appUserRepository.findByEmail(appUser.getEmail())
+      Boolean userExists=  appUserRepository.findByEmail(appUser.getEmail())
                 .isPresent();
-      if (userExist){
+      if (userExists){
+          // TODO check of attributes are the same and
+          // TODO if email not confirmed send confirmation email.
           throw new IllegalStateException("email already exist");
       }
     String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
@@ -50,7 +54,6 @@ public class AppUserService  implements UserDetailsService {
                 LocalDateTime.now(),
                 LocalDateTime.now().plusMinutes(15),
                 appUser
-
         );
 
         confirmationTokenService.saveConfirmationToken(confirmationToken);
@@ -59,6 +62,7 @@ public class AppUserService  implements UserDetailsService {
     }
 
     public int enableAppUser(String email) {
+
         return appUserRepository.enableAppUser(email);
     }
 }
